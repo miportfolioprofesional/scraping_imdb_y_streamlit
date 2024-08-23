@@ -29,8 +29,12 @@ def scrape_imdb(url):
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--disable-gpu')
-
-    driver = uc.Chrome(options=options)
+    options.add_argument('--headless')  # Ejecutar en modo headless
+    options.add_argument('--window-size=1920x1080')  # Especificar un tamaño de ventana
+    
+    # Especificar la ruta de chromedriver
+    driver_path = r'C:\Users\Usuario\Downloads\scraping_+_streamlit\.venv\chromedriver.exe'
+    driver = uc.Chrome(options=options, driver_executable_path=driver_path)
 
     try:
         driver.get(url)
@@ -57,7 +61,6 @@ def scrape_imdb(url):
         df1['titulo'] = df1['peliculas'].str.extract(r'\d+\.\s(.+)$', expand=False)
         df1 = df1.dropna().reset_index(drop=True)
         titulos = df1['titulo'].tolist()
-
         if len(df_final) == len(titulos):
             df_final['titulo'] = titulos
         else:
