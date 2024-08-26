@@ -8,10 +8,10 @@ import time
 import re
 import random
 
-
 # Definir los valores únicos para cada categoría
 años_unicos = ['1994', '1972', '2008', '1974', '1957', '1993', '2003', '2001', '1966', '2002', '1999', '2010', '1980', '1990', '1975', '2014', '1995', '1946', '1954', '1991', '1998', '1997', '1977', '1985', '2019', '1960', '2000', '2023', '2024', '2006', '1988', '1962', '1942', '2011', '1936', '1968', '1979', '1931', '2012', '1981', '1950', '2018', '1940', '1986', '2009', '2017', '1984', '1964', '2016', '1963', '1952', '1983', '2004', '1992', '1959', '1941', '1944', '1958', '1987', '1971', '1973', '1989', '2007', '1927', '1948', '2020', '1976', '2005', '1965', '2013', '1921', '1961', '2022', '1982', '1939', '2015', '1996', '2021', '1925', '1978', '1926', '1924', '1953', '1949', '1928']
 valoraciones_unicas = ['13', '18', 'A', '12', '14', '16', '7', 'PG-13', '(Banned)', 'PG', 'Approved', 'A/i', 'T', '7/i', 'Not Rated']
+
 
 def classify_entry(entry):
     if entry in años_unicos:
@@ -30,23 +30,22 @@ def scrape_imdb(url):
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--disable-gpu')
-    options.add_argument('--window-size=1920x1080')  # Especificar un tamaño de ventana
+    options.add_argument('--window-size=1920x1080')
 
     # Establecer un agente de usuario personalizado
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
     options.add_argument(f'user-agent={user_agent}')
-    
-    # Especificar la ruta de chromedriver
-    driver_path = r'C:\Users\Usuario\Downloads\scraping_streamlit\chromedriver.exe'
-    driver = uc.Chrome(options=options, driver_executable_path=driver_path)
+
+    # Forzar la versión de ChromeDriver a la versión del navegador en uso
+    version_main = 127  # Cambia esto a la versión principal de Chrome usada en Streamlit Cloud
+    driver = uc.Chrome(options=options, version_main=version_main)  # Especificar la versión principal del navegador
 
     try:
         driver.get(url)
         
-        # Usar sleep con intervalos cortos y distribución gaussiana
         mean = 10
         std_dev = 2
-        time.sleep(abs(random.gauss(mean, std_dev)))  # Evitar valores negativos con abs()
+        time.sleep(abs(random.gauss(mean, std_dev)))
         
         wait = WebDriverWait(driver, 20)
         wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'h3.ipc-title__text')))
@@ -54,7 +53,6 @@ def scrape_imdb(url):
         movie_titles = [title.text for title in titles]
         df1 = pd.DataFrame(movie_titles, columns=['peliculas'])
 
-        # Extraer los metadatos
         elements = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "span.sc-b189961a-8.hCbzGp.cli-title-metadata-item")))
         data = [element.text for element in elements]
 
@@ -104,3 +102,4 @@ if st.button('Scrapear'):
             st.download_button(label="Descargar Excel", data=open("mejores_peliculas.xlsx", "rb"), file_name="mejores_peliculas.xlsx")
         except Exception as e:
             st.error(f"Error durante el scraping: {e}")
+            
