@@ -1,61 +1,61 @@
 
-# 🎥 IMDb Top 250 Scraper con Streamlit
+# 🎥 IMDb Top 250 Scraper with Streamlit
 
-¡Bienvenido al **IMDb Top 250 Scraper**! Esta aplicación permite extraer información de las 250 mejores películas según IMDb y visualizarla de manera amigable. Además, puedes descargar los datos extraídos en un archivo Excel 📊.
+Welcome to the **IMDb Top 250 Scraper**! This app lets you extract information from the top 250 movies according to IMDb and view it in a user-friendly way. Plus, you can download the extracted data in an Excel file 📊.
 
-## 📋 Descripción
+## 📋 Description
 
-Esta aplicación web, desarrollada con [Streamlit](https://streamlit.io/), permite a los usuarios introducir la URL de la lista de las 250 mejores películas de IMDb y obtener información detallada de cada película, incluyendo:
+This web application, developed with [Streamlit](https://streamlit.io/),allows users to enter the URL of the IMDb Top 250 movies list and get detailed information about each movie, including:
 
-- **Título de la película** 🎬
-- **Año de lanzamiento** 📅
-- **Duración** ⏱️
-- **Valoración** ⭐
+- **Movie Title** 🎬
+- **Release Year** 📅
+- **Duration** ⏱️
+- **Rating** ⭐
 
-## 🚀 Funcionalidad
+## 🚀 Functionality
 
-1. **Scraping de Datos**: Utiliza Selenium con un ChromeDriver indetectable para navegar por la página de IMDb y extraer información clave de las películas.
-2. **Clasificación y Organización**: Los datos extraídos se clasifican en categorías como 'Año', 'Duración' y 'Valoración'.
-3. **Interfaz Amigable**: La aplicación utiliza Streamlit para proporcionar una interfaz de usuario sencilla y moderna.
-4. **Exportar a Excel**: Los usuarios pueden descargar la información extraída en formato Excel para su análisis o uso posterior.
+1. **Data Scraping**: Uses Selenium with an undetectable ChromeDriver to navigate the IMDb page and extract key information about the movies.
+2. **Sorting and Organization**: The extracted data is sorted into categories like 'Year', 'Duration', and 'Rating'.
+3. **User-Friendly Interface**: The app uses Streamlit to provide a simple and modern user interface.
+4. **Export to Excel**: Users can download the extracted information in Excel format for further analysis or use.
 
-## 📚 Fuente de Información
+## 📚 Information Source
 
-Los datos son extraídos directamente desde la página de [IMDb Top 250](https://www.imdb.com/chart/top/?ref_=nv_mv_250), una de las fuentes más populares y confiables para la información de películas.
+The data is extracted directly from the page [IMDb Top 250](https://www.imdb.com/chart/top/?ref_=nv_mv_250), one of the most popular and reliable sources for movie information.
 
-## 🎯 Finalidad
+## 🎯 Purpose
 
-La finalidad de esta aplicación es proporcionar una herramienta fácil de usar para cineastas, analistas de datos, y aficionados al cine, que quieran explorar y analizar las mejores películas según IMDb. Ya sea para investigaciones, análisis de tendencias o simplemente por curiosidad, esta herramienta facilita el acceso a datos estructurados de alta calidad.
+The purpose of this application is to provide an easy-to-use tool for filmmakers, data analysts, and movie enthusiasts who want to explore and analyze the best movies according to IMDb. Whether for research, trend analysis, or just out of curiosity, this tool makes accessing high-quality structured data easy.
 
-## 🛠️ Cómo Usar
+## 🛠️ How to Use
 
-1. **Clonar el repositorio**:
+1. **Clone the repository**:
     ```bash
     git clone https://github.com/tu_usuario/scraping_imdb_y_streamlit.git
     cd scraping_imdb_y_streamlit
     ```
 
-2. **Instalar las dependencias**:
+2. **Install the dependencies**:
     ```bash
     pip install -r requirements.txt
     ```
 
-3. **Ejecutar la aplicación**:
+3. **Run the app**:
     ```bash
     streamlit run app.py
     ```
 
-4. **Introducir la URL de IMDb** en la interfaz de Streamlit y presionar el botón "Scrapear".
+4. **Enter the IMDb URL** in the Streamlit interface and press the "Scrape" button.
 
-## 📦 Requerimientos
+## 📦 Requirements
 
 - Python 3.7+
 - [Streamlit](https://streamlit.io/)
 - [Selenium](https://www.selenium.dev/)
 - [Undetected ChromeDriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver)
 
-## 📧 Contacto
+## 📧 Contact
 
-Para más información, problemas o sugerencias, por favor contacta a [matiasjavierendrek@gmail.com](mailto:tuemail@example.com).
+For more information, issues, or suggestions, please contact [matiasjavierendrek@gmail.com](mailto:tuemail@example.com).
 
-¡Disfruta explorando el maravilloso mundo del cine con esta herramienta! 🎉🎬
+Enjoy exploring the wonderful world of cinema with this tool! 🎉🎬
